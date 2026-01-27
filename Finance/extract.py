@@ -50,9 +50,9 @@ print("Données extraites avec succès.")
 
 # Gestion des chemins de fichiers :
 script_dir = os.path.dirname(os.path.abspath(__file__))
-output_path = os.path.join(script_dir, "extracted_data.csv")
+output_path = os.path.join(script_dir, "Data", "extracted_data.csv")
 
-# Création du dossier de sortie si nécessaire :
+# Création du dossier  Data de sortie si nécessaire :
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
 # Exportation des données :
