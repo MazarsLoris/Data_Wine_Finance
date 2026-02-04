@@ -1,0 +1,15 @@
+relationship 84956290-c2f8-48b7-88eb-0462b1568545
+	joinOnDateBehavior: datePartOnly
+	fromColumn: extracted_data.'Date Commande'
+	toColumn: LocalDateTable_6cfeb5e8-8ee9-425b-bf0d-ff9aee2a8734.Date
+
+relationship 55dddc6a-4994-4325-8bd3-70356386f409
+	joinOnDateBehavior: datePartOnly
+	fromColumn: extracted_data.'Date Comptable'
+	toColumn: LocalDateTable_04a6fafd-84cc-4838-96d4-9391e73a6c3c.Date
+
+relationship e9f6681e-6144-4faa-9173-1c5c33bbe8cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refresh Date'.Refresh_date
+	toColumn: LocalDateTable_cd32af78-d582-4912-9334-46664eb85861.Date
+

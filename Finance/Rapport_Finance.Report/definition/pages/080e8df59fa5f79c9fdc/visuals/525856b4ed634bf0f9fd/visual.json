@@ -1,0 +1,237 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "525856b4ed634bf0f9fd",
+  "position": {
+    "x": 0,
+    "y": 174.86505851444949,
+    "z": 1000,
+    "height": 335.05612610460952,
+    "width": 1280.305708144256,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Ce rapport a été spécifiquement développé pour répondre à la problématique de l’écart constaté entre les ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": "volumes de ventes HT (db_sales)",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": " et les ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": "encaissements TTC (db_finance)",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": ". L’enjeu est d’auditer l’intégralité du cycle de vie des produits, de la commande en magasin jusqu’à l’émission de la facture, afin de sécuriser les revenus de l'entreprise.",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "À travers une analyse croisée des tables de transactions, l'outil permet d'identifier deux risques majeurs :",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "-Les pertes de revenus :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": " Identification des commandes marquées comme \"Livrées\" mais n'ayant généré aucune facture correspondante (oublis de facturation).",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "-Les anomalies de TVA :",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": " Vérification de la cohérence du passage du montant HT au TTC, permettant de détecter d'éventuelles erreurs de calcul fiscal ou des paramétrages produits incorrects.",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "L'interface offre une capacité de filtrage granulaire par ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": "magasin",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": ", ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": "statut de paiement",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": " et ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": "taux de TVA",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  },
+                  {
+                    "value": ", offrant ainsi au management une vision claire des montants en attente de régularisation et des leviers d'optimisation du cash-flow.",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

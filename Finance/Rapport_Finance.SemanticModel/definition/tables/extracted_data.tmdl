@@ -1,0 +1,241 @@
+table extracted_data
+	lineageTag: 34b2c639-2d69-45df-8232-0bde62403720
+
+	measure Total_facture_Audit = ```
+			
+			SUMX(
+			    DISTINCT(extracted_data[Id Facture]), 
+			    CALCULATE(MAX(extracted_data[Montant Facture TTC]))
+			)
+			```
+		formatString: 0
+		lineageTag: ad8724fb-c6a8-4cb6-8e17-820bf3fb9a38
+
+	measure TVA_En_Attente = ```
+			
+			VAR HT_Unique = 
+			    SUMX(
+			        DISTINCT(extracted_data[Id Facture]), 
+			        CALCULATE(MAX(extracted_data[Total HT Commande]))
+			    )
+			RETURN
+			CALCULATE(
+			    HT_Unique * 0.20, 
+			    extracted_data[Statut Paiement Facture] = "En attente"
+			)
+			```
+		lineageTag: 2433d9c1-afce-4a28-8d07-ef5d8efc3de8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Montant_Factures_Sans_ID =
+			
+			CALCULATE(
+			    SUM(extracted_data[Total HT Commande]),
+			    extracted_data[Id Facture] = "Non renseigné"
+			)
+		lineageTag: 44025cfb-3c43-4413-8894-967506bf44cf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Montant_Attente = ```
+			
+			SUMX(
+			    DISTINCT(extracted_data[Id Commande]), 
+			    CALCULATE(
+			        MAX(extracted_data[Total HT Commande]),
+			        KEEPFILTERS(extracted_data[Statut Paiement Facture] = "En attente")
+			    )
+			)
+			```
+		lineageTag: 4c5b2bb1-b501-4ac9-b561-f08dd3181665
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Id Commande'
+		dataType: string
+		lineageTag: da8a72c9-a4c8-4bc3-ab8c-196b69ac9151
+		summarizeBy: none
+		sourceColumn: Id Commande
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Commande'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c9e88333-bef8-42a9-b4a1-e562aca6b3e6
+		summarizeBy: none
+		sourceColumn: Date Commande
+
+		variation Variation
+			isDefault
+			relationship: 84956290-c2f8-48b7-88eb-0462b1568545
+			defaultHierarchy: LocalDateTable_6cfeb5e8-8ee9-425b-bf0d-ff9aee2a8734.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Id Client'
+		dataType: string
+		lineageTag: 7160e9b7-3e9e-4f47-8039-6ee4f5228579
+		summarizeBy: none
+		sourceColumn: Id Client
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Id Magasin'
+		dataType: string
+		lineageTag: c3754131-c1ff-44cb-bf6e-0a2164311c66
+		summarizeBy: none
+		sourceColumn: Id Magasin
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Statut Commande'
+		dataType: string
+		lineageTag: 7ed87d3a-22cc-4c6f-a099-9555276aa20c
+		summarizeBy: none
+		sourceColumn: Statut Commande
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total HT Commande'
+		dataType: double
+		lineageTag: f9cf53c0-9feb-4143-b05e-1b083a5cdef9
+		summarizeBy: sum
+		sourceColumn: Total HT Commande
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Id Produit'
+		dataType: string
+		lineageTag: 17d65425-9956-47bd-8d8c-74138f1c52ea
+		summarizeBy: none
+		sourceColumn: Id Produit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantite
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d1163e6-8f1a-48d8-8873-1c0e155aef44
+		summarizeBy: sum
+		sourceColumn: Quantite
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prix Unitaire'
+		dataType: double
+		lineageTag: 6cd3e9f8-308e-4a71-9377-f716b783bff3
+		summarizeBy: sum
+		sourceColumn: Prix Unitaire
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taux Remise'
+		dataType: double
+		lineageTag: 281b3ca2-77b9-4912-97c2-f75b798f8bf6
+		summarizeBy: sum
+		sourceColumn: Taux Remise
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sous-Total Produit'
+		dataType: double
+		lineageTag: 00f40312-67f2-40da-95c7-279aadfff0e1
+		summarizeBy: sum
+		sourceColumn: Sous-Total Produit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Id Facture'
+		dataType: string
+		lineageTag: 97d69919-9831-4252-9f73-e9de2a090325
+		summarizeBy: none
+		sourceColumn: Id Facture
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Comptable'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9be9c025-8f96-4ab7-a4d2-95a79c050421
+		summarizeBy: none
+		sourceColumn: Date Comptable
+
+		variation Variation
+			isDefault
+			relationship: 55dddc6a-4994-4325-8bd3-70356386f409
+			defaultHierarchy: LocalDateTable_04a6fafd-84cc-4838-96d4-9391e73a6c3c.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Montant Facture TTC'
+		dataType: double
+		lineageTag: 6c8f6cf7-54c3-4efa-9668-68d6b1e2c07b
+		summarizeBy: sum
+		sourceColumn: Montant Facture TTC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Statut Paiement Facture'
+		dataType: string
+		lineageTag: ac0bdf44-b92f-4ddf-afb4-387af9ebea4c
+		summarizeBy: none
+		sourceColumn: Statut Paiement Facture
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ecart_TVA = ```
+			
+			IF(
+			    ISBLANK(extracted_data[Montant Facture TTC]), 
+			    0, 
+			    ABS(extracted_data[Montant Facture TTC] - (extracted_data[Total HT Commande] * 1.20))
+			)
+			```
+		formatString: 0.00
+		lineageTag: 40e2ffea-db31-4b12-b2ac-604521659a78
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tranche Comptable'
+		dataType: string
+		lineageTag: 6454b67d-40e4-4d76-98aa-c2ec6835002a
+		summarizeBy: none
+		sourceColumn: Tranche Comptable
+
+		annotation SummarizationSetBy = Automatic
+
+	partition extracted_data = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Portfolio\Maison_Mazars_BI\Finance\Data\extracted_data.csv"),[Delimiter=",", Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"Id Commande", type text}, {"Date Commande", type date}, {"Id Client", type text}, {"Id Magasin", type text}, {"Statut Commande", type text}, {"Total HT Commande", type text}, {"Id Produit", type text}, {"Quantite", Int64.Type}, {"Prix Unitaire", type text}, {"Taux Remise", type text}, {"Sous-Total Produit", type text}, {"Id Facture", type text}, {"Date Comptable", type date}, {"Montant Facture TTC", type text}, {"Statut Paiement Facture", type text}}),
+				    #"Type modifié avec paramètres régionaux" = Table.TransformColumnTypes(#"Type modifié", {{"Montant Facture TTC", type number}}, "en-US"),
+				    #"Type modifié avec paramètres régionaux1" = Table.TransformColumnTypes(#"Type modifié avec paramètres régionaux", {{"Total HT Commande", type number}, {"Prix Unitaire", type number}, {"Taux Remise", type number}, {"Sous-Total Produit", type number}}, "en-US"),
+				    #"Valeur remplacée" = Table.ReplaceValue(#"Type modifié avec paramètres régionaux1","None","En attente d'annulation",Replacer.ReplaceText,{"Statut Paiement Facture"}),
+				    #"Valeur remplacée1" = Table.ReplaceValue(#"Valeur remplacée","None","Non renseigné",Replacer.ReplaceText,{"Id Facture"})
+				in
+				    #"Valeur remplacée1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

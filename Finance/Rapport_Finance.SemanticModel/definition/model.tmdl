@@ -1,0 +1,23 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["extracted_data","Last Refresh Date"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table extracted_data
+ref table DateTableTemplate_6f65d03b-0cbc-432c-8f6a-e4f3175e00cd
+ref table LocalDateTable_6cfeb5e8-8ee9-425b-bf0d-ff9aee2a8734
+ref table LocalDateTable_04a6fafd-84cc-4838-96d4-9391e73a6c3c
+ref table 'Last Refresh Date'
+ref table LocalDateTable_cd32af78-d582-4912-9334-46664eb85861
+
+ref cultureInfo fr-FR
+
