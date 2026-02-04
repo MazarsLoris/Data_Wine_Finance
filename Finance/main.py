@@ -7,7 +7,7 @@ Ce script principal exécute les scripts d'extraction, de transformation et de c
 Il orchestre le flux de données de la base de données vers le fichier final prêt pour l'analyse.
 """
 
-#########################
+#########################L
 # Importation
 #########################
 
