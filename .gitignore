@@ -5,4 +5,4 @@ Finance/Data/*.csv
 .ipynb_checkpoints/
 
 # Ignore les Notebooks
-*.ipynb
+Finance/*.ipynb
