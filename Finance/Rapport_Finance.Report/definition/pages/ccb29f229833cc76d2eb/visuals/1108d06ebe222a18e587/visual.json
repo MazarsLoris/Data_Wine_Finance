@@ -211,25 +211,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "dd99895bedce1fe702bb",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "extracted_data"
-                  }
-                },
-                "Property": "Id Facture"
-              }
-            },
-            "Function": 2
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "65a50593bf2a0fa2cfb8",
         "field": {
           "Column": {

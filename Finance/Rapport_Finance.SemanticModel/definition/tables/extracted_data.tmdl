@@ -38,13 +38,16 @@ table extracted_data
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure Montant_Attente =
+	measure Montant_Attente = ```
 			
-			CALCULATE(
-			    SUM(extracted_data[Total HT Commande]),
-			    KEEPFILTERS(extracted_data[Statut Paiement Facture] = "En Attente d'annulation"),
-			    KEEPFILTERS(extracted_data[Statut Commande] <> "Annulée")
+			SUMX(
+			    DISTINCT(extracted_data[Id Commande]), 
+			    CALCULATE(
+			        MAX(extracted_data[Total HT Commande]),
+			        KEEPFILTERS(extracted_data[Statut Paiement Facture] = "En attente")
+			    )
 			)
+			```
 		lineageTag: 4c5b2bb1-b501-4ac9-b561-f08dd3181665
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -210,11 +213,19 @@ table extracted_data
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Tranche Comptable'
+		dataType: string
+		lineageTag: 6454b67d-40e4-4d76-98aa-c2ec6835002a
+		summarizeBy: none
+		sourceColumn: Tranche Comptable
+
+		annotation SummarizationSetBy = Automatic
+
 	partition extracted_data = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("D:\Portfolio\Maison_Mazars_BI\Finance\Data\extracted_data.csv"),[Delimiter=",", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("D:\Portfolio\Maison_Mazars_BI\Finance\Data\extracted_data.csv"),[Delimiter=",", Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"Id Commande", type text}, {"Date Commande", type date}, {"Id Client", type text}, {"Id Magasin", type text}, {"Statut Commande", type text}, {"Total HT Commande", type text}, {"Id Produit", type text}, {"Quantite", Int64.Type}, {"Prix Unitaire", type text}, {"Taux Remise", type text}, {"Sous-Total Produit", type text}, {"Id Facture", type text}, {"Date Comptable", type date}, {"Montant Facture TTC", type text}, {"Statut Paiement Facture", type text}}),
 				    #"Type modifié avec paramètres régionaux" = Table.TransformColumnTypes(#"Type modifié", {{"Montant Facture TTC", type number}}, "en-US"),

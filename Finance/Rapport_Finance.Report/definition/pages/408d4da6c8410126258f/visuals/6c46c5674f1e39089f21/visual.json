@@ -4,10 +4,10 @@
   "position": {
     "x": 1020,
     "y": 82.388059701492537,
-    "z": 7009,
+    "z": 8000,
     "height": 102.08955223880596,
     "width": 248.0597014925373,
-    "tabOrder": 7008
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "slicer",
@@ -23,11 +23,11 @@
                       "Entity": "extracted_data"
                     }
                   },
-                  "Property": "Id Commande"
+                  "Property": "Tranche Comptable"
                 }
               },
-              "queryRef": "extracted_data.Id Commande",
-              "nativeQueryRef": "Id Commande",
+              "queryRef": "extracted_data.Tranche Comptable",
+              "nativeQueryRef": "Tranche Comptable",
               "active": true
             }
           ]
@@ -104,7 +104,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Id Commande'"
+                  "Value": "'Tranche Comptable'"
                 }
               }
             },

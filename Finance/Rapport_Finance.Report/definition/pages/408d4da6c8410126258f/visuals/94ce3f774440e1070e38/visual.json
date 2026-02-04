@@ -197,6 +197,20 @@
               },
               "queryRef": "extracted_data.Taux Remise",
               "nativeQueryRef": "Taux Remise"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "extracted_data"
+                    }
+                  },
+                  "Property": "Tranche Comptable"
+                }
+              },
+              "queryRef": "extracted_data.Tranche Comptable",
+              "nativeQueryRef": "Tranche Comptable"
             }
           ]
         }
@@ -381,7 +395,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "142.2537240815472D"
+                  "Value": "122.5868553038578D"
                 }
               }
             }
@@ -416,6 +430,48 @@
           },
           "selector": {
             "metadata": "extracted_data.Statut Commande"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "96.64177889222199D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "extracted_data.Montant Facture TTC"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.82089739698355D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "extracted_data.Taux Remise"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.22388059701493D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "extracted_data.Tranche Comptable"
           }
         }
       ]

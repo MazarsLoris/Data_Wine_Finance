@@ -1,41 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
-  "displayName": "Signet 1",
+  "displayName": "ANALYSE",
   "name": "2158264a74be0c099a9b",
   "options": {
-    "targetVisualNames": [
-      "686472e95bef0a5a046a"
-    ]
+    "targetVisualNames": []
   },
   "explorationState": {
     "version": "1.3",
-    "activeSection": "ccb29f229833cc76d2eb",
+    "activeSection": "00cb2b4a3adc505bbdc9",
     "sections": {
-      "ccb29f229833cc76d2eb": {
+      "00cb2b4a3adc505bbdc9": {
         "visualContainers": {
-          "1108d06ebe222a18e587": {
+          "7f117f31761285382715": {
             "filters": {
               "byExpr": [
-                {
-                  "name": "7159d5ee341987b1bc3d",
-                  "type": "Advanced",
-                  "expression": {
-                    "Aggregation": {
-                      "Expression": {
-                        "Column": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "extracted_data"
-                            }
-                          },
-                          "Property": "Id Facture"
-                        }
-                      },
-                      "Function": 2
-                    }
-                  },
-                  "howCreated": 0
-                },
                 {
                   "name": "65a50593bf2a0fa2cfb8",
                   "type": "Categorical",
@@ -93,6 +71,26 @@
                     }
                   },
                   "howCreated": 1
+                },
+                {
+                  "name": "b1a3bd22c9fe9c4e0227",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "extracted_data"
+                            }
+                          },
+                          "Property": "Id Facture"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
                 }
               ]
             },
@@ -121,11 +119,11 @@
               ]
             }
           },
-          "40095b7dd2bff76288ad": {
+          "17441b258a1f54aac8b5": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "f7beea0e873fca7a7faf",
+                  "name": "7dd150e047a548b059af",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -176,11 +174,11 @@
               }
             }
           },
-          "4ae90948bfb425b48d48": {
+          "967dd4e57f8068a41820": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "14bd264f7b5502fc1243",
+                  "name": "ea677b3a64550d3f02ae",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -246,44 +244,12 @@
               }
             }
           },
-          "72b236790f26b0ea4059": {
-            "singleVisual": {
-              "visualType": "textbox",
-              "objects": {}
-            }
-          },
-          "8a78f0356856fe133de8": {
-            "singleVisual": {
-              "visualType": "pageNavigator",
-              "objects": {}
-            }
-          },
-          "8be72f54563f32364fb6": {
+          "3550ea4263c0a7d4448f": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "e261bb7f77cfbf424afb",
+                  "name": "ddbee079f667f5923a64",
                   "type": "Advanced",
-                  "expression": {
-                    "Aggregation": {
-                      "Expression": {
-                        "Column": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "extracted_data"
-                            }
-                          },
-                          "Property": "Id Facture"
-                        }
-                      },
-                      "Function": 5
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "91d7c2ca7a1f54f72af9",
-                  "type": "Categorical",
                   "filter": {
                     "Version": 2,
                     "From": [
@@ -296,28 +262,22 @@
                     "Where": [
                       {
                         "Condition": {
-                          "In": {
-                            "Expressions": [
-                              {
-                                "Column": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Source": "e"
-                                    }
-                                  },
-                                  "Property": "Id Facture"
-                                }
-                              }
-                            ],
-                            "Values": [
-                              [
-                                {
-                                  "Literal": {
-                                    "Value": "'Non renseigné'"
+                          "StartsWith": {
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "e"
                                   }
-                                }
-                              ]
-                            ]
+                                },
+                                "Property": "Statut Paiement Facture"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'En attente'"
+                              }
+                            }
                           }
                         }
                       }
@@ -330,15 +290,50 @@
                           "Entity": "extracted_data"
                         }
                       },
-                      "Property": "Id Facture"
+                      "Property": "Statut Paiement Facture"
                     }
                   },
                   "howCreated": 1
+                },
+                {
+                  "name": "f2338f11fece8b25b536",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Id Client"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2778f7deee8efe127108",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "extracted_data"
+                            }
+                          },
+                          "Property": "Sous-Total Produit"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
                 }
               ]
             },
             "singleVisual": {
-              "visualType": "card",
+              "visualType": "barChart",
               "objects": {},
               "orderBy": [
                 {
@@ -352,36 +347,125 @@
                               "Entity": "extracted_data"
                             }
                           },
-                          "Property": "Id Facture"
+                          "Property": "Sous-Total Produit"
                         }
                       },
-                      "Function": 5
+                      "Function": 0
                     }
                   }
-                }
-              ]
-            }
-          },
-          "9d5d18c15bb402b6b011": {
-            "singleVisual": {
-              "visualType": "image",
-              "objects": {}
-            }
-          },
-          "9f2b6e300452ccaacfd9": {
-            "filters": {
-              "byExpr": [
+                },
                 {
-                  "name": "155a38c47243ec858891",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
                       "Expression": {
                         "SourceRef": {
                           "Entity": "extracted_data"
                         }
                       },
-                      "Property": "Total_facture_Audit"
+                      "Property": "Statut Paiement Facture"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Id Client"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "333e3ddd3e40cd67b936": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7194832581864cd93877",
+                  "type": "Advanced",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "e",
+                        "Entity": "extracted_data",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "StartsWith": {
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "e"
+                                  }
+                                },
+                                "Property": "Statut Paiement Facture"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'En attente'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Statut Paiement Facture"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "2ce95d5eb2e2bc2021a2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Id Magasin"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3fd68c4817a1d9cce0b5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "extracted_data"
+                            }
+                          },
+                          "Property": "Sous-Total Produit"
+                        }
+                      },
+                      "Function": 0
                     }
                   },
                   "howCreated": 0
@@ -389,36 +473,170 @@
               ]
             },
             "singleVisual": {
-              "visualType": "card",
+              "visualType": "barChart",
               "objects": {},
               "orderBy": [
                 {
                   "Direction": 2,
                   "Expression": {
-                    "Measure": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "extracted_data"
+                            }
+                          },
+                          "Property": "Sous-Total Produit"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                },
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
                       "Expression": {
                         "SourceRef": {
                           "Entity": "extracted_data"
                         }
                       },
-                      "Property": "Total_facture_Audit"
+                      "Property": "Statut Paiement Facture"
                     }
                   }
                 }
-              ]
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Id Magasin"
+                    }
+                  }
+                ]
+              }
             }
           },
-          "9fe6fb22c97ebec1bfd4": {
+          "a6bec7eb87432aa3072d": {
             "singleVisual": {
               "visualType": "textbox",
               "objects": {}
             }
           },
-          "b9eb18fb8fa9de90c5a1": {
+          "d18e9737e3bd911e8f12": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "87b68441f302aa55f5aa",
+                  "name": "7e51f26be62350acc5af",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "extracted_data"
+                            }
+                          },
+                          "Property": "Id Facture"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "extracted_data"
+                            }
+                          },
+                          "Property": "Id Facture"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "e10ebe7a58659f72af36": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "2785a323deea81014a5d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8e0094b23d9421e1b9f8",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Total_facture_Audit"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Total_facture_Audit"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "fab99e2abdf3c35713bc": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "67fffd06d3a698d9aee3": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1f3e543356a6dbfc90c1",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -469,11 +687,51 @@
               }
             }
           },
-          "d1b6d0672eab4ed42ed3": {
+          "49f2e7c30d0ac643669d": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "908fa5b0fc45d862e952",
+                  "name": "2350171513f9a143a2ae",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Montant_Attente"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "extracted_data"
+                        }
+                      },
+                      "Property": "Montant_Attente"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "9fbbc93dad10e2cd2902": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "fba54c0c213c8bbd89a1",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -482,7 +740,7 @@
                           "Entity": "extracted_data"
                         }
                       },
-                      "Property": "Id Commande"
+                      "Property": "Tranche Comptable"
                     }
                   },
                   "howCreated": 0
@@ -517,25 +775,43 @@
                           "Entity": "extracted_data"
                         }
                       },
-                      "Property": "Id Commande"
+                      "Property": "Tranche Comptable"
                     }
                   }
                 ]
               }
             }
           },
-          "d26757f77e857605a27b": {
+          "4e6cae3e92ff7b5aa8fa": {
             "singleVisual": {
               "visualType": "shape",
               "objects": {}
             }
           },
-          "5c39ce318f6fb2c9afbb": {
+          "1bdadfe92b064431048d": {
+            "singleVisual": {
+              "visualType": "pageNavigator",
+              "objects": {}
+            }
+          },
+          "44f5467cf98214647cd3": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "e72f48581c5f070e9e4a": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "7a759fa4c3ddf37ba0ac": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "b37962893fee794d0ed3",
-                  "type": "Categorical",
+                  "name": "7194832581864cd93877",
+                  "type": "Advanced",
                   "expression": {
                     "Column": {
                       "Expression": {
@@ -546,10 +822,10 @@
                       "Property": "Statut Paiement Facture"
                     }
                   },
-                  "howCreated": 0
+                  "howCreated": 1
                 },
                 {
-                  "name": "e1024978a43e323a351a",
+                  "name": "7d3a24b054beb5e81966",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -560,10 +836,114 @@
                               "Entity": "extracted_data"
                             }
                           },
-                          "Property": "Id Facture"
+                          "Property": "Sous-Total Produit"
                         }
                       },
-                      "Function": 5
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dcb461869e2a2d26ce45",
+                  "type": "Advanced",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "extracted_data"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "Date Comptable"
+                            }
+                          },
+                          "Hierarchy": "Hiérarchie de dates"
+                        }
+                      },
+                      "Level": "Année"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7f69b927c7ebc7df8abf",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "extracted_data"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "Date Comptable"
+                            }
+                          },
+                          "Hierarchy": "Hiérarchie de dates"
+                        }
+                      },
+                      "Level": "Trimestre"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e77883293db001e83723",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "extracted_data"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "Date Comptable"
+                            }
+                          },
+                          "Hierarchy": "Hiérarchie de dates"
+                        }
+                      },
+                      "Level": "Mois"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d87c15911dc9fa05cacd",
+                  "type": "Advanced",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "extracted_data"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "Date Comptable"
+                            }
+                          },
+                          "Hierarchy": "Hiérarchie de dates"
+                        }
+                      },
+                      "Level": "Jour"
                     }
                   },
                   "howCreated": 0
@@ -571,49 +951,43 @@
               ]
             },
             "singleVisual": {
-              "visualType": "pieChart",
+              "visualType": "areaChart",
               "objects": {},
-              "orderBy": [
-                {
-                  "Direction": 2,
-                  "Expression": {
-                    "Aggregation": {
-                      "Expression": {
-                        "Column": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "extracted_data"
-                            }
-                          },
-                          "Property": "Id Facture"
-                        }
-                      },
-                      "Function": 5
-                    }
-                  }
-                }
-              ],
               "activeProjections": {
                 "Category": [
                   {
-                    "Column": {
+                    "HierarchyLevel": {
                       "Expression": {
-                        "SourceRef": {
-                          "Entity": "extracted_data"
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "extracted_data"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "Date Comptable"
+                            }
+                          },
+                          "Hierarchy": "Hiérarchie de dates"
                         }
                       },
-                      "Property": "Statut Paiement Facture"
+                      "Level": "Année"
                     }
                   }
                 ]
+              },
+              "display": {
+                "mode": "hidden"
               }
             }
           },
-          "5bd9b5aad097ee22cb6f": {
+          "64384b3e71344d236958": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "15dcd0b94ea305483abf",
+                  "name": "071fd40ef9ac9a1b170d",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -622,13 +996,13 @@
                           "Entity": "extracted_data"
                         }
                       },
-                      "Property": "Statut Commande"
+                      "Property": "Tranche Comptable"
                     }
                   },
-                  "howCreated": 0
+                  "howCreated": 1
                 },
                 {
-                  "name": "a94a66d9db8c81466711",
+                  "name": "b621df6bc98e4502f05f",
                   "type": "Advanced",
                   "expression": {
                     "Aggregation": {
@@ -639,10 +1013,10 @@
                               "Entity": "extracted_data"
                             }
                           },
-                          "Property": "Id Facture"
+                          "Property": "Total HT Commande"
                         }
                       },
-                      "Function": 5
+                      "Function": 0
                     }
                   },
                   "howCreated": 0
@@ -650,28 +1024,8 @@
               ]
             },
             "singleVisual": {
-              "visualType": "pieChart",
+              "visualType": "barChart",
               "objects": {},
-              "orderBy": [
-                {
-                  "Direction": 2,
-                  "Expression": {
-                    "Aggregation": {
-                      "Expression": {
-                        "Column": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "extracted_data"
-                            }
-                          },
-                          "Property": "Id Facture"
-                        }
-                      },
-                      "Function": 5
-                    }
-                  }
-                }
-              ],
               "activeProjections": {
                 "Category": [
                   {
@@ -681,10 +1035,13 @@
                           "Entity": "extracted_data"
                         }
                       },
-                      "Property": "Statut Commande"
+                      "Property": "Tranche Comptable"
                     }
                   }
                 ]
+              },
+              "display": {
+                "mode": "hidden"
               }
             }
           }

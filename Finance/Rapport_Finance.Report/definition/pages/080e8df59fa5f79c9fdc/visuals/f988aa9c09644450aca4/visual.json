@@ -110,6 +110,22 @@
             "id": "default"
           }
         }
+      ],
+      "pages": [
+        {
+          "properties": {
+            "showPage": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "5b02216159b3a0190e79"
+          }
+        }
       ]
     },
     "visualContainerObjects": {
