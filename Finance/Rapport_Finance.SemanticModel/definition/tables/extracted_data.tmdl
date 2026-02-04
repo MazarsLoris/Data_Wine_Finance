@@ -1,6 +1,54 @@
 table extracted_data
 	lineageTag: 34b2c639-2d69-45df-8232-0bde62403720
 
+	measure Total_facture_Audit = ```
+			
+			SUMX(
+			    DISTINCT(extracted_data[Id Facture]), 
+			    CALCULATE(MAX(extracted_data[Montant Facture TTC]))
+			)
+			```
+		formatString: 0
+		lineageTag: ad8724fb-c6a8-4cb6-8e17-820bf3fb9a38
+
+	measure TVA_En_Attente = ```
+			
+			VAR HT_Unique = 
+			    SUMX(
+			        DISTINCT(extracted_data[Id Facture]), 
+			        CALCULATE(MAX(extracted_data[Total HT Commande]))
+			    )
+			RETURN
+			CALCULATE(
+			    HT_Unique * 0.20, 
+			    extracted_data[Statut Paiement Facture] = "En attente"
+			)
+			```
+		lineageTag: 2433d9c1-afce-4a28-8d07-ef5d8efc3de8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Montant_Factures_Sans_ID =
+			
+			CALCULATE(
+			    SUM(extracted_data[Total HT Commande]),
+			    extracted_data[Id Facture] = "Non renseigné"
+			)
+		lineageTag: 44025cfb-3c43-4413-8894-967506bf44cf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Montant_Attente =
+			
+			CALCULATE(
+			    SUM(extracted_data[Total HT Commande]),
+			    KEEPFILTERS(extracted_data[Statut Paiement Facture] = "En Attente d'annulation"),
+			    KEEPFILTERS(extracted_data[Statut Commande] <> "Annulée")
+			)
+		lineageTag: 4c5b2bb1-b501-4ac9-b561-f08dd3181665
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column 'Id Commande'
 		dataType: string
 		lineageTag: da8a72c9-a4c8-4bc3-ab8c-196b69ac9151
@@ -50,12 +98,14 @@ table extracted_data
 		annotation SummarizationSetBy = Automatic
 
 	column 'Total HT Commande'
-		dataType: string
+		dataType: double
 		lineageTag: f9cf53c0-9feb-4143-b05e-1b083a5cdef9
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Total HT Commande
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Id Produit'
 		dataType: string
@@ -75,28 +125,34 @@ table extracted_data
 		annotation SummarizationSetBy = Automatic
 
 	column 'Prix Unitaire'
-		dataType: string
+		dataType: double
 		lineageTag: 6cd3e9f8-308e-4a71-9377-f716b783bff3
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Prix Unitaire
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column 'Taux Remise'
-		dataType: string
+		dataType: double
 		lineageTag: 281b3ca2-77b9-4912-97c2-f75b798f8bf6
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Taux Remise
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column 'Sous-Total Produit'
-		dataType: string
+		dataType: double
 		lineageTag: 00f40312-67f2-40da-95c7-279aadfff0e1
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Sous-Total Produit
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Id Facture'
 		dataType: string
@@ -123,12 +179,14 @@ table extracted_data
 		annotation UnderlyingDateTimeDataType = Date
 
 	column 'Montant Facture TTC'
-		dataType: string
+		dataType: double
 		lineageTag: 6c8f6cf7-54c3-4efa-9668-68d6b1e2c07b
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Montant Facture TTC
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Statut Paiement Facture'
 		dataType: string
@@ -138,15 +196,33 @@ table extracted_data
 
 		annotation SummarizationSetBy = Automatic
 
+	column Ecart_TVA = ```
+			
+			IF(
+			    ISBLANK(extracted_data[Montant Facture TTC]), 
+			    0, 
+			    ABS(extracted_data[Montant Facture TTC] - (extracted_data[Total HT Commande] * 1.20))
+			)
+			```
+		formatString: 0.00
+		lineageTag: 40e2ffea-db31-4b12-b2ac-604521659a78
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition extracted_data = m
 		mode: import
 		source =
 				let
 				    Source = Csv.Document(File.Contents("D:\Portfolio\Maison_Mazars_BI\Finance\Data\extracted_data.csv"),[Delimiter=",", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"Id Commande", type text}, {"Date Commande", type date}, {"Id Client", type text}, {"Id Magasin", type text}, {"Statut Commande", type text}, {"Total HT Commande", type text}, {"Id Produit", type text}, {"Quantite", Int64.Type}, {"Prix Unitaire", type text}, {"Taux Remise", type text}, {"Sous-Total Produit", type text}, {"Id Facture", type text}, {"Date Comptable", type date}, {"Montant Facture TTC", type text}, {"Statut Paiement Facture", type text}})
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"Id Commande", type text}, {"Date Commande", type date}, {"Id Client", type text}, {"Id Magasin", type text}, {"Statut Commande", type text}, {"Total HT Commande", type text}, {"Id Produit", type text}, {"Quantite", Int64.Type}, {"Prix Unitaire", type text}, {"Taux Remise", type text}, {"Sous-Total Produit", type text}, {"Id Facture", type text}, {"Date Comptable", type date}, {"Montant Facture TTC", type text}, {"Statut Paiement Facture", type text}}),
+				    #"Type modifié avec paramètres régionaux" = Table.TransformColumnTypes(#"Type modifié", {{"Montant Facture TTC", type number}}, "en-US"),
+				    #"Type modifié avec paramètres régionaux1" = Table.TransformColumnTypes(#"Type modifié avec paramètres régionaux", {{"Total HT Commande", type number}, {"Prix Unitaire", type number}, {"Taux Remise", type number}, {"Sous-Total Produit", type number}}, "en-US"),
+				    #"Valeur remplacée" = Table.ReplaceValue(#"Type modifié avec paramètres régionaux1","None","En attente d'annulation",Replacer.ReplaceText,{"Statut Paiement Facture"}),
+				    #"Valeur remplacée1" = Table.ReplaceValue(#"Valeur remplacée","None","Non renseigné",Replacer.ReplaceText,{"Id Facture"})
 				in
-				    #"Type modifié"
+				    #"Valeur remplacée1"
 
 	annotation PBI_NavigationStepName = Navigation
 

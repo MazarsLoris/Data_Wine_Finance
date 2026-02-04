@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "ce6da427d3669ecff5bd",
+  "name": "2e18a3a7ff376e530880",
   "position": {
-    "x": 471.04477611940297,
-    "y": 630.44776119402979,
-    "z": 2000,
-    "height": 89.552238805970148,
-    "width": 338.50746268656718,
-    "tabOrder": 2000
+    "x": 0,
+    "y": 619.70149253731347,
+    "z": 7010,
+    "height": 100.29850746268656,
+    "width": 253.43283582089552,
+    "tabOrder": 7009
   },
   "visual": {
     "visualType": "card",
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Last Refresh Date"
-                        }
-                      },
-                      "Property": "Refresh_date"
+                    "SourceRef": {
+                      "Entity": "extracted_data"
                     }
                   },
-                  "Function": 4
+                  "Property": "Montant_Attente"
                 }
               },
-              "queryRef": "Min(Last Refresh Date.Refresh_date)",
-              "nativeQueryRef": "Refresh_date (le plus récent)"
+              "queryRef": "extracted_data.Montant_Attente",
+              "nativeQueryRef": "Montant_Attente"
             }
           ]
         }
@@ -41,21 +36,16 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Last Refresh Date"
-                      }
-                    },
-                    "Property": "Refresh_date"
+                  "SourceRef": {
+                    "Entity": "extracted_data"
                   }
                 },
-                "Function": 4
+                "Property": "Montant_Attente"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
@@ -83,10 +73,24 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 3,
+                      "ColorId": 9,
                       "Percent": 0
                     }
                   }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "25D"
                 }
               }
             }
@@ -121,14 +125,14 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Date d''actualisation'"
+                  "Value": "'Montant en attente'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "25D"
+                  "Value": "22D"
                 }
               }
             },
@@ -137,7 +141,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 3,
+                      "ColorId": 9,
                       "Percent": 0
                     }
                   }
@@ -148,6 +152,45 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "25D"
                 }
               }
             }

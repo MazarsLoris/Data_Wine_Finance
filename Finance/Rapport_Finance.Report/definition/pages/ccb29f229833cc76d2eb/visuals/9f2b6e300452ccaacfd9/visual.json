@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "ce6da427d3669ecff5bd",
+  "name": "9f2b6e300452ccaacfd9",
   "position": {
-    "x": 471.04477611940297,
-    "y": 630.44776119402979,
-    "z": 2000,
-    "height": 89.552238805970148,
-    "width": 338.50746268656718,
-    "tabOrder": 2000
+    "x": 531.044776119403,
+    "y": 87.761194029850742,
+    "z": 10000,
+    "height": 100.29850746268656,
+    "width": 217.61194029850745,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "card",
@@ -17,22 +17,18 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Last Refresh Date"
-                        }
-                      },
-                      "Property": "Refresh_date"
+                    "SourceRef": {
+                      "Entity": "extracted_data"
                     }
                   },
-                  "Function": 4
+                  "Property": "Total_facture_Audit"
                 }
               },
-              "queryRef": "Min(Last Refresh Date.Refresh_date)",
-              "nativeQueryRef": "Refresh_date (le plus récent)"
+              "queryRef": "extracted_data.Total_facture",
+              "nativeQueryRef": "Total_facture",
+              "format": "0.00"
             }
           ]
         }
@@ -41,21 +37,16 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Last Refresh Date"
-                      }
-                    },
-                    "Property": "Refresh_date"
+                  "SourceRef": {
+                    "Entity": "extracted_data"
                   }
                 },
-                "Function": 4
+                "Property": "Total_facture_Audit"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
@@ -82,11 +73,24 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#252423'"
                     }
                   }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "25D"
                 }
               }
             }
@@ -121,18 +125,56 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Date d''actualisation'"
+                  "Value": "'Montant facture'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "25D"
+                  "Value": "22D"
                 }
               }
             },
             "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#252423'"
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
               "solid": {
                 "color": {
                   "expr": {
@@ -144,10 +186,10 @@
                 }
               }
             },
-            "alignment": {
+            "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "'center'"
+                  "Value": "25D"
                 }
               }
             }

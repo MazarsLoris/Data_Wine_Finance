@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "c550f988a202f808cee4",
+  "name": "9fe6fb22c97ebec1bfd4",
   "position": {
-    "x": 446.33389061380467,
+    "x": 596.74229758777165,
     "y": 0,
-    "z": 0,
-    "height": 72.147122044423213,
-    "width": 416.9859087652257,
-    "tabOrder": 0
+    "z": 6000,
+    "height": 59.918796274181993,
+    "width": 379.07809887747794,
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,15 +19,16 @@
               {
                 "textRuns": [
                   {
-                    "value": "RAPPORT FINANCE",
+                    "value": "RAPPORT FACTURATION",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "DIN",
-                      "fontSize": "36pt",
+                      "fontSize": "28pt",
                       "color": "#12239e"
                     }
                   }
-                ]
+                ],
+                "horizontalTextAlignment": "center"
               }
             ]
           }

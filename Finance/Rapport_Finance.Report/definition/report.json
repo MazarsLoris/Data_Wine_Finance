@@ -53,6 +53,17 @@
           "type": "BaseTheme"
         }
       ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "image-removebg-preview3904944890712969.png",
+          "path": "image-removebg-preview3904944890712969.png",
+          "type": "Image"
+        }
+      ]
     }
   ],
   "settings": {

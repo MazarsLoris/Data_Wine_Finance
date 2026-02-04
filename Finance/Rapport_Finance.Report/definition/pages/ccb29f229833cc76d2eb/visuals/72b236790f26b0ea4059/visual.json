@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "c550f988a202f808cee4",
+  "name": "72b236790f26b0ea4059",
   "position": {
-    "x": 446.33389061380467,
-    "y": 0,
-    "z": 0,
-    "height": 72.147122044423213,
-    "width": 416.9859087652257,
-    "tabOrder": 0
+    "x": 502.38805970149252,
+    "y": 43.880597014925371,
+    "z": 8000,
+    "height": 43.880597014925371,
+    "width": 567.76119402985069,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,15 +19,16 @@
               {
                 "textRuns": [
                   {
-                    "value": "RAPPORT FINANCE",
+                    "value": "ANALYSE DES ANOMALIES",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "DIN",
-                      "fontSize": "36pt",
+                      "fontSize": "20pt",
                       "color": "#12239e"
                     }
                   }
-                ]
+                ],
+                "horizontalTextAlignment": "center"
               }
             ]
           }

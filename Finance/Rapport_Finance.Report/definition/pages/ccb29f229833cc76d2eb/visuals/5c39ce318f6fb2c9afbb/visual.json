@@ -1,19 +1,38 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "ce6da427d3669ecff5bd",
+  "name": "5c39ce318f6fb2c9afbb",
   "position": {
-    "x": 471.04477611940297,
-    "y": 630.44776119402979,
-    "z": 2000,
-    "height": 89.552238805970148,
-    "width": 338.50746268656718,
-    "tabOrder": 2000
+    "x": 283.88059701492534,
+    "y": 239.1044776119403,
+    "z": 11001,
+    "height": 393.13432835820896,
+    "width": 481.79104477611941,
+    "tabOrder": 11001
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "pieChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "extracted_data"
+                    }
+                  },
+                  "Property": "Statut Paiement Facture"
+                }
+              },
+              "queryRef": "extracted_data.Statut Paiement Facture",
+              "nativeQueryRef": "Statut Paiement Facture",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
           "projections": [
             {
               "field": {
@@ -22,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Last Refresh Date"
+                          "Entity": "extracted_data"
                         }
                       },
-                      "Property": "Refresh_date"
+                      "Property": "Id Facture"
                     }
                   },
-                  "Function": 4
+                  "Function": 5
                 }
               },
-              "queryRef": "Min(Last Refresh Date.Refresh_date)",
-              "nativeQueryRef": "Refresh_date (le plus récent)"
+              "queryRef": "CountNonNull(extracted_data.Id Facture)",
+              "nativeQueryRef": "Nombre de Id Facture"
             }
           ]
         }
@@ -46,53 +65,20 @@
                   "Column": {
                     "Expression": {
                       "SourceRef": {
-                        "Entity": "Last Refresh Date"
+                        "Entity": "extracted_data"
                       }
                     },
-                    "Property": "Refresh_date"
+                    "Property": "Id Facture"
                   }
                 },
-                "Function": 4
+                "Function": 5
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "categoryLabels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "labels": [
-        {
-          "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "visualContainerObjects": {
       "background": [
@@ -108,7 +94,7 @@
           }
         }
       ],
-      "title": [
+      "border": [
         {
           "properties": {
             "show": {
@@ -118,21 +104,14 @@
                 }
               }
             },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Date d''actualisation'"
-                }
-              }
-            },
-            "fontSize": {
+            "radius": {
               "expr": {
                 "Literal": {
                   "Value": "25D"
                 }
               }
             },
-            "fontColor": {
+            "color": {
               "solid": {
                 "color": {
                   "expr": {
@@ -143,11 +122,17 @@
                   }
                 }
               }
-            },
-            "alignment": {
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'center'"
+                  "Value": "'Proportion de facture par statut de facturation'"
                 }
               }
             }
