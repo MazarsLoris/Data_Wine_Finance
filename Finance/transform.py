@@ -12,9 +12,9 @@ les anciennes et exporte le tout dans le dossier Data.
 #########################
 
 import os
+from datetime import datetime
 
 import pandas as pd
-from datetime import datetime
 
 # Gestion des chemins de fichiers :
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -23,10 +23,6 @@ data_path = os.path.join(script_dir, "Data", "extracted_data.csv")
 ##########################################
 # Fonctions de nettoyage du jeu de données
 ##########################################
-
-# Importation des données extraites :
-df = pd.read_csv(data_path)
-print("Début du nettoyage des données.")
 
 
 def clean_data(df):
