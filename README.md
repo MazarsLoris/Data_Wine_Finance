@@ -82,7 +82,7 @@ Ce projet démontre la capacité à transformer des données comptables brutes e
 
 L'implémentation des tranches de vieillissement (de 0-30j à +90j) offre une vision claire du risque client et permet une gestion priorisée du cash-flow. Cette solution constitue une base solide pour le pilotage de la performance financière, garantissant une visibilité totale sur les encours et la réduction des délais de paiement.
 
-![alt text](image-1.png)
+![alt text](Images/Dashboard_Finance.png)
 
 ### 2. Mission "Rentabilité" (Direction Commerciale)
 > **Question Manager :** *"Quelle est la rentabilité réelle par vendeur une fois qu'on déduit les remises et le coût d'achat des produits ?"*
