@@ -7,8 +7,5 @@ Finance/Data/*
 # Ignore les Notebooks
 Finance/*.ipynb
 
-# Ignore les fichiers png
-*.png
-
 # Ignore le pycache
 **/__pycache__/
