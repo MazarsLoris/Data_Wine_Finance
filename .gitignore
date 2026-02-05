@@ -1,8 +1,14 @@
 # Ignore toutes les données dans le dossier Data
-Finance/Data/*.csv
+Finance/Data/*
 
 # Ignore les dossiers de sauvegarde automatique de Jupyter
 .ipynb_checkpoints/
 
 # Ignore les Notebooks
 Finance/*.ipynb
+
+# Ignore les fichiers png
+*.png
+
+# Ignore le pycache
+**/__pycache__/
