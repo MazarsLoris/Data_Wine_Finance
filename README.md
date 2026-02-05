@@ -27,6 +27,63 @@ Chaque scénario business nécessite entre **4 et 6 jointures SQL** et un traite
 * **Défi :** Réconcilier le flux : **Produit** → **Commande** → **Facture** → **Magasin**.
 * **Expertise :** Identification des pertes de revenus (commandes livrées non facturées).
 
+#### Organisation du projet :
+
+Maison_Mazars_BI/  
+├── Finance/  
+│   ├── Data/  
+│   │   └── extracted_data.csv  
+│   ├── extract.py  
+│   ├── main.py  
+│   ├── transform.py  
+│   ├── Rapport_Finance.pbip   
+│   ├── requirements.txt  
+├── .gitignore  
+└── README.md  
+
+#### Utilisation du projet :
+Utilisation du Projet
+Ce projet suit un flux de travail automatisé divisé en trois phases : installation, exécution du pipeline de données (ETL) et analyse visuelle.
+
+1. Installation des dépendances
+Avant de commencer, assurez-vous d'avoir Python installé. Installez ensuite les bibliothèques nécessaires (Pandas, SQLAlchemy, PyMySQL) via le terminal :
+
+```Bash
+pip install -r Finance/requirements.txt
+```
+
+2. Exécution du Pipeline ETL
+Pour mettre à jour les données du rapport, lancez le script orchestrateur :
+
+```Bash
+python Finance/main.py
+```
+Le processus se déroule comme suit :
+
+- Authentification : Le script demande le mot de passe de la base de données SQL de manière sécurisée.
+
+- Extraction : extract.py récupère les nouvelles transactions depuis la base de données.
+
+- Transformation : transform.py nettoie les données, harmonise les statuts et calcule les Tranches Comptables (0-30j, 31-60j, 61-90j, +90j).
+
+- Chargement : Le résultat est exporté dans Finance/Data/extracted_data.csv.
+
+3. Consultation des Rapports
+Ouvrez le fichier Rapport_Finance.pbix dans Power BI Desktop. Cliquez sur "Actualiser" pour charger les dernières données traitées par Python.
+
+**Onglet GLOBAL :** Vision d'ensemble sur le volume (1642 factures) et le montant total des anomalies (249,90K €).
+
+**Onglet LISTING :** Détail par client et par commande avec l'affichage de la tranche de risque.
+
+**Onglet ANALYSE :** Suivi de l'évolution du montant HT et distribution des dossiers à risques (focus sur les +90 jours représentant 0,24M €).
+
+#### Résultats :
+Ce projet démontre la capacité à transformer des données comptables brutes en leviers de décision stratégiques via un pipeline ETL automatisé. En isolant précisément **249,90K €** d'anomalies critiques, l'outil permet de passer d'une simple observation de données à un audit financier proactif et ciblé.
+
+L'implémentation des tranches de vieillissement (de 0-30j à +90j) offre une vision claire du risque client et permet une gestion priorisée du cash-flow. Cette solution constitue une base solide pour le pilotage de la performance financière, garantissant une visibilité totale sur les encours et la réduction des délais de paiement.
+
+![alt text](image-1.png)
+
 ### 2. Mission "Rentabilité" (Direction Commerciale)
 > **Question Manager :** *"Quelle est la rentabilité réelle par vendeur une fois qu'on déduit les remises et le coût d'achat des produits ?"*
 * **Défi :** Croiser l'**Employé** et son **Magasin** avec le détail des **Remises** par **Produit**.
