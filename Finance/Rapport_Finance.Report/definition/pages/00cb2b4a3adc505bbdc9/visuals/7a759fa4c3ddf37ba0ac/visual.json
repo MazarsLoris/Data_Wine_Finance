@@ -65,7 +65,7 @@
               },
               "queryRef": "extracted_data.Date Comptable.Variation.Hiérarchie de dates.Trimestre",
               "nativeQueryRef": "Date Comptable Trimestre",
-              "active": true
+              "active": false
             },
             {
               "field": {
@@ -290,41 +290,9 @@
           }
         },
         "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "e",
-              "Entity": "extracted_data",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "StartsWith": {
-                  "Left": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "e"
-                        }
-                      },
-                      "Property": "Statut Paiement Facture"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "'En attente'"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
         "howCreated": "User"
       }
     ]
-  }
+  },
+  "isHidden": true
 }
