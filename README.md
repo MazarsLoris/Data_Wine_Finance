@@ -16,6 +16,9 @@ L'environnement repose sur 4 bases de données relationnelles et des flux de don
 * **`db_hr`** : Structure des magasins et performance des employés.
 * **Flux Externes** : Objectifs de vente (Excel) et Campagnes Marketing (CSV).
 
+### Schéma relationnels des bases de données
+
+![alt text](BDD/Schema_BDD.png)
 ---
 
 ## Les 4 Missions
