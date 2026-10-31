@@ -1,11 +1,15 @@
-# Ignore toutes les données dans le dossier Data
+# Ignore toutes les données des différentes dossiers Data
 Finance/Data/*
+Rentabilité/Data/*
 
 # Ignore les dossiers de sauvegarde automatique de Jupyter
 .ipynb_checkpoints/
 
 # Ignore les Notebooks
 Finance/*.ipynb
+
+# Ignore le dossier .vscode
+.vscode/
 
 # Ignore le pycache
 **/__pycache__/
